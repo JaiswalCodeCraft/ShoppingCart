@@ -6,8 +6,6 @@ const { isValidBody, isValid, isValidPassword, isValidFiles ,pinRegex,cityRegex,
 const {uploadFile} = require('../aws/upload');
 const { default: mongoose } = require('mongoose');
 
-
-
 const registerUser = async(req, res) =>{ 
     try {
         const file = req.files;

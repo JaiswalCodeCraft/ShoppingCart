@@ -10,11 +10,8 @@ const authentication = async function (req, res, next) {
         token = token.split(" ")[1];
 
         jwt.verify(token, "productmanagementgroup62",function(err,data){
-            if(err){
-                if(err.message == "invalid token") return res.status(400).send({status:false,message:"invalid token"})
-                if(err.message == "invalid signature") return res.status(400).send({status:false,message:"Invalid token"})
-                if(err.message == "jwt expired") return res.status(400).send({status:false,message:"token expired  once more login"})
-            }else{
+            if(err)  return res.status(400).send({status:false,message:"token expired  once more login"})
+            else{
                 req.userDetails = data;
 
                 next()
